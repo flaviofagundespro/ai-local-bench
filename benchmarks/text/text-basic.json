@@ -1,0 +1,20 @@
+{
+  "suite_name": "text-basic",
+  "prompt_name": "text-basic",
+  "backend": "cpu",
+  "seed": "0",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "executable": "CHANGE_ME/llama-cli",
+    "model_path": "CHANGE_ME/model.gguf",
+    "timeout_sec": 300,
+    "extra_args": []
+  },
+  "workload": {
+    "prompt": "Write a concise benchmark summary for a local AI inference run.",
+    "max_tokens": 64,
+    "temperature": 0.2,
+    "ctx_size": 4096
+  }
+}

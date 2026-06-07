@@ -1,0 +1,27 @@
+{
+  "suite_name": "image-comfyui-sd15-windows-amd",
+  "prompt_name": "photo-portrait-sd15",
+  "backend": "CHANGE_ME_BACKEND",
+  "seed": "123456",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "base_url": "CHANGE_ME_BASE_URL",
+    "workflow_path": "benchmarks/image/workflow-basic.json",
+    "checkpoint": "CHANGE_ME_CHECKPOINT",
+    "timeout_sec": 300,
+    "poll_timeout_sec": 300,
+    "poll_interval_sec": 1.0,
+    "service_process_name": "python"
+  },
+  "workload": {
+    "prompt": "a highly detailed cinematic portrait photo of an older brazilian man, natural skin texture, 85mm lens, soft window light, realistic, high dynamic range, sharp focus",
+    "width": 512,
+    "height": 512,
+    "steps": 30,
+    "cfg": 7,
+    "sampler": "euler",
+    "scheduler": "normal",
+    "batch_size": 1
+  }
+}

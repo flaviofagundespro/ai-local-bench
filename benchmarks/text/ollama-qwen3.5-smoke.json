@@ -1,0 +1,21 @@
+{
+  "suite_name": "ollama-qwen3.5-smoke",
+  "prompt_name": "ollama-qwen3.5-smoke",
+  "backend": "unknown",
+  "seed": "0",
+  "warmup_runs": 1,
+  "measured_runs": 2,
+  "runner_config": {
+    "base_url": "http://127.0.0.1:11434",
+    "model": "qwen3.5:latest",
+    "timeout_sec": 300,
+    "service_process_name": "ollama",
+    "options": {
+      "temperature": 0.2,
+      "num_predict": 64
+    }
+  },
+  "workload": {
+    "prompt": "Write one concise sentence summarizing a local AI benchmark run."
+  }
+}

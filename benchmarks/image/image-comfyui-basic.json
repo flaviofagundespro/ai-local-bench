@@ -1,0 +1,26 @@
+{
+  "suite_name": "image-comfyui-basic",
+  "prompt_name": "image-comfyui-basic",
+  "backend": "unknown",
+  "seed": "123456",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "base_url": "http://127.0.0.1:8188",
+    "workflow_path": "benchmarks/image/workflow-basic.json",
+    "checkpoint": "CHANGE_ME.safetensors",
+    "timeout_sec": 300,
+    "poll_timeout_sec": 300,
+    "poll_interval_sec": 1.0
+  },
+  "workload": {
+    "prompt": "A realistic studio product photo of a mechanical keyboard on a dark desk.",
+    "width": 512,
+    "height": 512,
+    "steps": 20,
+    "cfg": 7,
+    "sampler": "euler",
+    "scheduler": "normal",
+    "batch_size": 1
+  }
+}

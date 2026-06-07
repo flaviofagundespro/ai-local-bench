@@ -1,0 +1,27 @@
+{
+  "suite_name": "llamacpp-qwen2.5-coder-14b-windows-amd-vulkan",
+  "prompt_name": "text-basic",
+  "backend": "vulkan",
+  "seed": "0",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "executable": "C:/Projetos/ai-local-bench/tools/llama.cpp/llama-cli.exe",
+    "model_path": "C:/Users/flavi/.ollama/models/blobs/sha256-ac9bc7a69dab38da1c790838955f1293420b55ab555ef6b4615efa1c1507b1ed",
+    "timeout_sec": 300,
+    "extra_args": [
+      "--device",
+      "Vulkan0",
+      "--simple-io",
+      "-ngl",
+      "all",
+      "--single-turn"
+    ]
+  },
+  "workload": {
+    "prompt": "Write a concise benchmark summary for a local AI inference run.",
+    "max_tokens": 64,
+    "temperature": 0.2,
+    "ctx_size": 4096
+  }
+}

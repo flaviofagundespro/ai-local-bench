@@ -1,0 +1,27 @@
+{
+  "suite_name": "image-comfyui-vram-stress-windows-amd",
+  "prompt_name": "product-stress",
+  "backend": "CHANGE_ME_BACKEND",
+  "seed": "123456",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "base_url": "CHANGE_ME_BASE_URL",
+    "workflow_path": "benchmarks/image/workflow-basic.json",
+    "checkpoint": "CHANGE_ME_CHECKPOINT",
+    "timeout_sec": 600,
+    "poll_timeout_sec": 600,
+    "poll_interval_sec": 1.0,
+    "service_process_name": "python"
+  },
+  "workload": {
+    "prompt": "product photography of a premium black mechanical keyboard on a dark desk, controlled studio lighting, realistic shadows, ultra detailed",
+    "width": 1024,
+    "height": 1024,
+    "steps": 30,
+    "cfg": 7,
+    "sampler": "euler",
+    "scheduler": "normal",
+    "batch_size": 2
+  }
+}
