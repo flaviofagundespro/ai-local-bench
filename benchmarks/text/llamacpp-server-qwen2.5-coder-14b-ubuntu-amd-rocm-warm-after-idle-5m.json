@@ -1,0 +1,30 @@
+{
+  "suite_name": "llamacpp-server-qwen2.5-coder-14b-ubuntu-amd-rocm-warm-after-idle-5m",
+  "prompt_name": "warm-idle-404",
+  "backend": "rocm",
+  "seed": "123",
+  "warmup_runs": 1,
+  "measured_runs": 1,
+  "runner_config": {
+    "executable": "/home/flaviofagundes/Projetos/ai-local-bench/.build-rocm-hipcc/bin/llama-server",
+    "model_path": "/home/flaviofagundes/Projetos/ai-local-bench/models/qwen2.5/qwen2.5-coder-14b-instruct-q4_k_m.gguf",
+    "host": "127.0.0.1",
+    "port": 8080,
+    "base_url": "http://127.0.0.1:8080",
+    "timeout_sec": 120,
+    "server_start_timeout_sec": 120,
+    "ctx_size": 4096,
+    "ngl": 99,
+    "idle_after_run_sec": 300,
+    "server_args": []
+  },
+  "workload": {
+    "prompt": "What is the HTTP status code for Not Found? Output only the 3 digits.",
+    "expected_output": "404",
+    "max_tokens": 4,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 1,
+    "seed": 123
+  }
+}

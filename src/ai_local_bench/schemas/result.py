@@ -98,4 +98,3 @@ class BenchmarkResult:
     def to_dict(self) -> dict[str, str]:
         data = asdict(self)
         return {field: str(data.get(field, "")) if data.get(field, "") is not None else "" for field in RESULT_FIELD_NAMES}
-

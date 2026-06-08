@@ -20,6 +20,9 @@ def validate_suite_definition(suite: dict, runner_name: str) -> None:
     if runner_name == "llamacpp":
         _require_fields(suite["runner_config"], ["executable", "model_path"], "runner_config")
         _require_fields(suite["workload"], ["prompt", "max_tokens"], "workload")
+    elif runner_name == "llamacpp_server":
+        _require_fields(suite["runner_config"], ["executable", "model_path"], "runner_config")
+        _require_fields(suite["workload"], ["prompt", "max_tokens"], "workload")
     elif runner_name == "comfyui":
         _require_fields(suite["runner_config"], ["base_url", "workflow_path", "checkpoint"], "runner_config")
         _require_fields(

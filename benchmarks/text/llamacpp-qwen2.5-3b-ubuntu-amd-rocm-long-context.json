@@ -1,0 +1,20 @@
+{
+  "suite_name": "llamacpp-qwen2.5-3b-ubuntu-amd-rocm-long-context",
+  "prompt_name": "llamacpp-text-long-context",
+  "backend": "rocm",
+  "seed": "0",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "executable": "/home/flaviofagundes/Projetos/ai-local-bench/.build-rocm-hipcc/bin/llama-cli",
+    "model_path": "/home/flaviofagundes/Projetos/ai-local-bench/models/qwen2.5/qwen2.5-3b-instruct-q4_k_m.gguf",
+    "timeout_sec": 600,
+    "extra_args": ["-ngl", "99"]
+  },
+  "workload": {
+    "prompt": "You are benchmarking long-context prompt processing. Read the following repeated benchmark notes carefully and then answer with a concise five-bullet summary. Benchmark notes: Local AI benchmarking should preserve identical model files, quantization, prompts, context length, generation limits, and backend configuration across comparable runs. Failed runs remain part of the benchmark record because stability matters. GPU metrics are best-effort and may be empty. Standard tests are comparable presets while stress tests are not directly comparable. Automatic fallbacks such as CPU fallback or reduced resolution must be recorded in notes and logs. Repeat: identical model files, identical quantization, identical prompts, identical context length, identical generation limits, identical backend configuration. Repeat: failed runs remain part of the benchmark record because stability matters. Repeat: GPU metrics are best-effort and may be empty. Repeat: standard tests are comparable presets while stress tests are not directly comparable. Repeat: automatic fallbacks must be recorded in notes and logs.",
+    "max_tokens": 128,
+    "temperature": 0.1,
+    "ctx_size": 8192
+  }
+}

@@ -17,6 +17,7 @@ from ai_local_bench.schemas import BenchmarkResult
 
 TOKEN_RATE_PATTERNS = [
     re.compile(r"eval rate:\s*([0-9.]+)\s*tokens/s", re.IGNORECASE),
+    re.compile(r"eval time\s*=.*?([0-9.]+)\s*tokens per second", re.IGNORECASE),
     re.compile(r"tok/s[:=]\s*([0-9.]+)", re.IGNORECASE),
     re.compile(r"Generation:\s*([0-9.]+)\s*t/s", re.IGNORECASE),
 ]
@@ -96,6 +97,8 @@ def run_single_llamacpp_run(
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
+            encoding="utf-8",
+            errors="replace",
         )
         vram_reader = None
         if str(system_info.get("os_name", "")).lower() == "windows" and str(suite.get("backend", "")).lower() == "vulkan":
@@ -144,6 +147,13 @@ def build_llamacpp_command(suite: dict, executable: Path, model_path: Path) -> l
         "-n",
         str(workload.get("max_tokens", 64)),
     ]
+    executable_name = executable.name.lower()
+    if executable_name in {"llama-cli", "llama-cli.exe", "llama-completion", "llama-completion.exe"}:
+        extra_args = list(config.get("extra_args", []))
+        if "-no-cnv" not in command and "-no-cnv" not in extra_args:
+            command.append("-no-cnv")
+        if "--no-warmup" not in command and "--no-warmup" not in extra_args:
+            command.append("--no-warmup")
     if workload.get("temperature") is not None:
         command.extend(["--temp", str(workload["temperature"])])
     if workload.get("ctx_size") is not None:

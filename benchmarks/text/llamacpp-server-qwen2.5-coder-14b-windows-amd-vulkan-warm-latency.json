@@ -1,0 +1,29 @@
+{
+  "suite_name": "llamacpp-server-qwen2.5-coder-14b-windows-amd-vulkan-warm-latency",
+  "prompt_name": "warm-latency-2-plus-2",
+  "backend": "vulkan",
+  "seed": "123",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "executable": "C:/Projetos/ai-local-bench/tools/llama.cpp/llama-server.exe",
+    "model_path": "C:\\Users\\flavi\\.ollama\\models\\blobs\\sha256-ac9bc7a69dab38da1c790838955f1293420b55ab555ef6b4615efa1c1507b1ed",
+    "host": "127.0.0.1",
+    "port": 8080,
+    "base_url": "http://127.0.0.1:8080",
+    "timeout_sec": 120,
+    "server_start_timeout_sec": 120,
+    "ctx_size": 4096,
+    "ngl": 99,
+    "server_args": []
+  },
+  "workload": {
+    "prompt": "What is 2+2? Output only the digit.",
+    "expected_output": "4",
+    "max_tokens": 4,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 1,
+    "seed": 123
+  }
+}

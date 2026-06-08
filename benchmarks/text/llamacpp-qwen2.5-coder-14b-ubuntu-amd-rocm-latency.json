@@ -1,0 +1,20 @@
+{
+  "suite_name": "llamacpp-qwen2.5-coder-14b-ubuntu-amd-rocm-latency",
+  "prompt_name": "llamacpp-text-latency",
+  "backend": "rocm",
+  "seed": "0",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "executable": "/home/flaviofagundes/Projetos/ai-local-bench/.build-rocm-hipcc/bin/llama-cli",
+    "model_path": "/home/flaviofagundes/Projetos/ai-local-bench/models/qwen2.5/qwen2.5-coder-14b-instruct-q4_k_m.gguf",
+    "timeout_sec": 300,
+    "extra_args": ["-ngl", "99"]
+  },
+  "workload": {
+    "prompt": "Reply with exactly one word: OK",
+    "max_tokens": 8,
+    "temperature": 0.0,
+    "ctx_size": 4096
+  }
+}

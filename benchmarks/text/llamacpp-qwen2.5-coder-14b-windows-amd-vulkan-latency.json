@@ -1,0 +1,23 @@
+{
+  "suite_name": "llamacpp-qwen2.5-coder-14b-windows-amd-vulkan-latency",
+  "prompt_name": "llamacpp-text-latency",
+  "backend": "vulkan",
+  "seed": "0",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "executable": "C:\\Projetos\\ai-local-bench\\tools\\llama.cpp\\llama-completion.exe",
+    "model_path": "C:\\Users\\flavi\\.ollama\\models\\blobs\\sha256-ac9bc7a69dab38da1c790838955f1293420b55ab555ef6b4615efa1c1507b1ed",
+    "timeout_sec": 300,
+    "extra_args": [
+      "-no-cnv",
+      "--no-warmup"
+    ]
+  },
+  "workload": {
+    "prompt": "Reply with exactly one word: OK",
+    "max_tokens": 8,
+    "temperature": 0.0,
+    "ctx_size": 4096
+  }
+}

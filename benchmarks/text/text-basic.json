@@ -6,7 +6,7 @@
   "warmup_runs": 1,
   "measured_runs": 5,
   "runner_config": {
-    "executable": "CHANGE_ME/llama-cli",
+    "executable": "CHANGE_ME/llama-completion",
     "model_path": "CHANGE_ME/model.gguf",
     "timeout_sec": 300,
     "extra_args": []

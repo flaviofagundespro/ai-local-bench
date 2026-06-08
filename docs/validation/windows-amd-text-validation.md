@@ -26,7 +26,7 @@ Validate a real text benchmark run on the maintainer Windows workstation.
 - Date: 2026-06-06
 - Model: `qwen2.5-coder:14b`
 - Backend: `Vulkan0`
-- Binary: `tools/llama.cpp/llama-cli.exe`
+- Binary: `tools/llama.cpp/llama-completion.exe`
 - Prompt: `Reply with exactly: OK`
 - Output: `OK`
 - Exit code: `0`

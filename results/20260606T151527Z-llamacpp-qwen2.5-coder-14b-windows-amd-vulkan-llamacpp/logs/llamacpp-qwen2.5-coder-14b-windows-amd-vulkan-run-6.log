@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Projetos\\ai-local-bench\\tools\\llama.cpp\\llama-cli.exe",
+    "-m",
+    "C:\\Users\\flavi\\.ollama\\models\\blobs\\sha256-ac9bc7a69dab38da1c790838955f1293420b55ab555ef6b4615efa1c1507b1ed",
+    "-p",
+    "Write a concise benchmark summary for a local AI inference run.",
+    "-n",
+    "64",
+    "--temp",
+    "0.2",
+    "-c",
+    "4096",
+    "--device",
+    "Vulkan0",
+    "--simple-io",
+    "-ngl",
+    "all",
+    "--single-turn"
+  ],
+  "stdout": "\nLoading model... \n\n\n\u00e2\u2013\u201e\u00e2\u2013\u201e \u00e2\u2013\u201e\u00e2\u2013\u201e\n\u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6\n\u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6  \u00e2\u2013\u20ac\u00e2\u2013\u20ac\u00e2\u2013\u02c6\u00e2\u2013\u201e \u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u201e\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u201e  \u00e2\u2013\u20ac\u00e2\u2013\u20ac\u00e2\u2013\u02c6\u00e2\u2013\u201e    \u00e2\u2013\u201e\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u201e \u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u201e\n\u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u201e\u00e2\u2013\u02c6\u00e2\u2013\u20ac\u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u201e\u00e2\u2013\u02c6\u00e2\u2013\u20ac\u00e2\u2013\u02c6\u00e2\u2013\u02c6    \u00e2\u2013\u02c6\u00e2\u2013\u02c6    \u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6\n\u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u20ac\u00e2\u2013\u02c6\u00e2\u2013\u201e\u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u20ac\u00e2\u2013\u02c6\u00e2\u2013\u201e\u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u20ac\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6 \u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u20ac \u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u02c6\u00e2\u2013\u20ac\n                                    \u00e2\u2013\u02c6\u00e2\u2013\u02c6    \u00e2\u2013\u02c6\u00e2\u2013\u02c6\n                                    \u00e2\u2013\u20ac\u00e2\u2013\u20ac    \u00e2\u2013\u20ac\u00e2\u2013\u20ac\n\nbuild      : b9542-6b80c74f2\nmodel      : sha256-ac9bc7a69dab38da1c790838955f1293420b55ab555ef6b4615efa1c1507b1ed\nmodalities : text\n\navailable commands:\n  /exit or Ctrl+C     stop or exit\n  /regen              regenerate the last response\n  /clear              clear the chat history\n  /read <file>        add a text file\n  /glob <pattern>     add text files using globbing pattern\n\n\n> Write a concise benchmark summary for a local AI inference run.\n\nBenchmark Summary:\n\n- **Model**: EfficientNet-B0\n- **Dataset**: CIFAR-10\n- **Inference Framework**: TensorFlow 2.10\n- **Hardware**: NVIDIA GeForce RTX 3080, 16GB GDDR6X\n- **Batch Size**: \n\n[ Prompt: 159.8 t/s | Generation: 34.0 t/s ]\n\nExiting...\n",
+  "stderr": ""
+}

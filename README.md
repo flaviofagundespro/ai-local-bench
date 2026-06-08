@@ -54,6 +54,11 @@ Runner execution is intentionally conservative in `v0.1`:
 - [Methodology](docs/methodology.md)
 - [Result Schema](docs/result-schema.md)
 - [Suite Definitions](docs/suite-definitions.md)
+- [AMD Text Backend Comparison Plan](docs/validation/amd-text-backend-comparison-plan.md)
+- [AMD Text Comparison Runbook](docs/validation/amd-text-comparison-runbook.md)
+- [Windows AMD llama.cpp Automation Notes](docs/validation/windows-amd-llamacpp-automation-notes.md)
+- [Ubuntu AMD llama.cpp Automation Notes](docs/validation/ubuntu-amd-llamacpp-automation-notes.md)
+- [AMD Text Warm Methodology](docs/validation/amd-text-warm-methodology.md)
 
 ## License
 
@@ -127,3 +132,24 @@ System detection is best-effort by design.
 - Maintainer validation now includes a formal Windows `llama.cpp + Vulkan` text run on the RX 6750 XT, plus an earlier Windows `Ollama + qwen3.5` baseline. The current MVP is strongest on Windows text workloads; the largest remaining validation gap is still image generation on AMD.
 - GPU runtime metrics are best-effort; VRAM, temperature, and power may remain empty.
 - The first deep validation target is AMD Radeon RX 6750 XT 12GB, but the project is hardware-vendor neutral by design.
+
+## Recommended AMD Text Comparison Battery
+
+For future Windows versus Linux AMD text comparisons, the repository now includes three reusable `llama.cpp` suites:
+
+- `benchmarks/text/llamacpp-text-latency.json`
+- `benchmarks/text/llamacpp-text-throughput.json`
+- `benchmarks/text/llamacpp-text-long-context.json`
+
+These are intended to support publishable comparisons across the same workstation with consistent model, quantization, and workload settings.
+
+The repository also includes concrete templates for the primary `qwen2.5` comparison family in `3B`, `7B`, and `14B`, plus a secondary `Ollama` reference template for `gemma4:12b`.
+
+
+
+
+
+
+## Warm Benchmarking
+
+The repository now includes autonomous `llama-server` benchmark templates for resident warm benchmarking on both Windows and Ubuntu.

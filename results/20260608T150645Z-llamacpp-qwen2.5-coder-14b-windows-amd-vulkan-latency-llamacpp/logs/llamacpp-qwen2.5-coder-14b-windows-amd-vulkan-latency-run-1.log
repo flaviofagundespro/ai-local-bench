@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Projetos\\ai-local-bench\\tools\\llama.cpp\\llama-completion.exe",
+    "-m",
+    "C:\\Users\\flavi\\.ollama\\models\\blobs\\sha256-ac9bc7a69dab38da1c790838955f1293420b55ab555ef6b4615efa1c1507b1ed",
+    "-p",
+    "Reply with exactly one word: OK",
+    "-n",
+    "8",
+    "--temp",
+    "0.0",
+    "-c",
+    "4096",
+    "-no-cnv",
+    "--no-warmup"
+  ],
+  "stdout": "Reply with exactly one word: OK. [end of text]\n\n\n",
+  "stderr": "0.00.840.484 I llama_completion: llama backend init\n0.00.840.489 I llama_completion: load the model and apply lora adapter, if any\n0.00.840.497 I common_init_result: fitting params to device memory ...\n0.00.840.497 I common_init_result: (for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on)\n0.01.198.394 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden\n0.12.516.530 W llama_context: n_ctx_seq (4096) < n_ctx_train (32768) -- the full capacity of the model will not be utilized\n0.12.655.351 I llama_completion: llama threadpool init, n_threads = 12\n0.12.655.361 I \n0.12.655.378 I system_info: n_threads = 12 (n_threads_batch = 12) / 24 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | AVX512 = 1 | AVX512_VBMI = 1 | AVX512_VNNI = 1 | AVX512_BF16 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | \n0.12.655.379 I \n0.12.655.465 I sampler seed: 2238228714\n0.12.655.478 I sampler params: \n\trepeat_last_n = 64, repeat_penalty = 1.000, frequency_penalty = 0.000, presence_penalty = 0.000\n\tdry_multiplier = 0.000, dry_base = 1.750, dry_allowed_length = 2, dry_penalty_last_n = -1\n\ttop_k = 40, top_p = 0.950, min_p = 0.050, xtc_probability = 0.000, xtc_threshold = 0.100, typical_p = 1.000, top_n_sigma = -1.000, temp = 0.000\n\tmirostat = 0, mirostat_lr = 0.100, mirostat_ent = 5.000, adaptive_target = -1.000, adaptive_decay = 0.900\n0.12.655.494 I sampler chain: logits -> ?penalties -> ?dry -> ?top-n-sigma -> top-k -> ?typical -> top-p -> min-p -> ?xtc -> temp-ext -> dist \n0.12.655.495 I generate: n_ctx = 4096, n_batch = 2048, n_predict = 8, n_keep = 0\n0.12.655.495 I \n0.12.766.291 I common_perf_print:    sampling time =       0.59 ms\n0.12.766.292 I common_perf_print:    samplers time =       0.09 ms /     9 tokens\n0.12.766.293 I common_perf_print:        load time =      79.59 ms\n0.12.766.295 I common_perf_print: prompt eval time =      79.41 ms /     7 tokens (   11.34 ms per token,    88.15 tokens per second)\n0.12.766.296 I common_perf_print:        eval time =      30.70 ms /     1 runs   (   30.70 ms per token,    32.57 tokens per second)\n0.12.766.297 I common_perf_print:       total time =     110.94 ms /     8 tokens\n0.12.766.299 I common_perf_print: unaccounted time =       0.23 ms /   0.2 %      (total - sampling - prompt eval - eval) / (total)\n0.12.766.299 I common_perf_print:    graphs reused =          0\n"
+}

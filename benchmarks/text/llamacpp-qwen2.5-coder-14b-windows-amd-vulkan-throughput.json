@@ -1,0 +1,23 @@
+{
+  "suite_name": "llamacpp-qwen2.5-coder-14b-windows-amd-vulkan-throughput",
+  "prompt_name": "llamacpp-text-throughput",
+  "backend": "vulkan",
+  "seed": "0",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "executable": "C:\\Projetos\\ai-local-bench\\tools\\llama.cpp\\llama-completion.exe",
+    "model_path": "C:\\Users\\flavi\\.ollama\\models\\blobs\\sha256-ac9bc7a69dab38da1c790838955f1293420b55ab555ef6b4615efa1c1507b1ed",
+    "timeout_sec": 600,
+    "extra_args": [
+      "-no-cnv",
+      "--no-warmup"
+    ]
+  },
+  "workload": {
+    "prompt": "Write a concise technical summary of the benefits and tradeoffs of local AI inference on consumer hardware. Keep the response factual and structured.",
+    "max_tokens": 256,
+    "temperature": 0.2,
+    "ctx_size": 4096
+  }
+}

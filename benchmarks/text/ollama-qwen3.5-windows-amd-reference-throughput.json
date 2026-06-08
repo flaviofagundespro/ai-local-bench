@@ -1,0 +1,17 @@
+{
+  "suite_name": "ollama-qwen3.5-windows-amd-reference-throughput",
+  "prompt_name": "ollama-text-throughput",
+  "backend": "unknown",
+  "seed": "0",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "base_url": "http://127.0.0.1:11434",
+    "model": "qwen3.5:latest",
+    "timeout_sec": 600,
+    "options": {}
+  },
+  "workload": {
+    "prompt": "Write a concise technical summary of the benefits and tradeoffs of local AI inference on consumer hardware. Keep the response factual and structured."
+  }
+}

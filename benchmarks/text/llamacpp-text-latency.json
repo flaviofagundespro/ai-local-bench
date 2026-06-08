@@ -1,0 +1,20 @@
+{
+  "suite_name": "llamacpp-text-latency",
+  "prompt_name": "llamacpp-text-latency",
+  "backend": "CHANGE_ME",
+  "seed": "0",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "executable": "CHANGE_ME/llama-completion",
+    "model_path": "CHANGE_ME/model.gguf",
+    "timeout_sec": 300,
+    "extra_args": []
+  },
+  "workload": {
+    "prompt": "Reply with exactly one word: OK",
+    "max_tokens": 8,
+    "temperature": 0.0,
+    "ctx_size": 4096
+  }
+}

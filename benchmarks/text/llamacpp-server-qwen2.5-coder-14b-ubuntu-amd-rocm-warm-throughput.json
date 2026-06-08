@@ -1,0 +1,28 @@
+{
+  "suite_name": "llamacpp-server-qwen2.5-coder-14b-ubuntu-amd-rocm-warm-throughput",
+  "prompt_name": "warm-throughput-newton",
+  "backend": "rocm",
+  "seed": "123",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "executable": "/home/flaviofagundes/Projetos/ai-local-bench/.build-rocm-hipcc/bin/llama-server",
+    "model_path": "/home/flaviofagundes/Projetos/ai-local-bench/models/qwen2.5/qwen2.5-coder-14b-instruct-q4_k_m.gguf",
+    "host": "127.0.0.1",
+    "port": 8080,
+    "base_url": "http://127.0.0.1:8080",
+    "timeout_sec": 180,
+    "server_start_timeout_sec": 120,
+    "ctx_size": 4096,
+    "ngl": 99,
+    "server_args": []
+  },
+  "workload": {
+    "prompt": "Summarize Newton's three laws of motion in exactly five short bullet points.",
+    "max_tokens": 160,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": 1,
+    "seed": 123
+  }
+}

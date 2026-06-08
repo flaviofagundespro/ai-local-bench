@@ -1,0 +1,20 @@
+{
+  "suite_name": "llamacpp-qwen2.5-7b-ubuntu-amd-rocm-throughput",
+  "prompt_name": "llamacpp-text-throughput",
+  "backend": "rocm",
+  "seed": "0",
+  "warmup_runs": 1,
+  "measured_runs": 5,
+  "runner_config": {
+    "executable": "/home/flaviofagundes/Projetos/ai-local-bench/.build-rocm-hipcc/bin/llama-cli",
+    "model_path": "/home/flaviofagundes/Projetos/ai-local-bench/models/qwen2.5/qwen2.5-7b-instruct-q4_k_m.gguf",
+    "timeout_sec": 600,
+    "extra_args": ["-ngl", "99"]
+  },
+  "workload": {
+    "prompt": "Write a concise technical summary of the benefits and tradeoffs of local AI inference on consumer hardware. Keep the response factual and structured.",
+    "max_tokens": 256,
+    "temperature": 0.2,
+    "ctx_size": 4096
+  }
+}

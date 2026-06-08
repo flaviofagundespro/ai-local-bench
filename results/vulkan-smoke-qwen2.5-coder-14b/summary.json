@@ -1,0 +1,25 @@
+﻿{
+    "executable":  "C:\\Projetos\\ai-local-bench\\tools\\llama.cpp\\llama-cli.exe",
+    "model_path":  "C:\\Users\\flavi\\.ollama\\models\\blobs\\sha256-ac9bc7a69dab38da1c790838955f1293420b55ab555ef6b4615efa1c1507b1ed",
+    "started_at":  "2026-06-06T14:48:08.5584314Z",
+    "finished_at":  "2026-06-06T14:48:13.2161285Z",
+    "exit_code":  null,
+    "adapter_instance":  "luid_0x00000000_0x00013ec6_phys_0",
+    "peak_gpu_util_percent_sum":  5.49,
+    "peak_dedicated_usage_mb":  1413.38,
+    "peak_process_private_mb":  0,
+    "args":  [
+                 "-m",
+                 "C:\\Users\\flavi\\.ollama\\models\\blobs\\sha256-ac9bc7a69dab38da1c790838955f1293420b55ab555ef6b4615efa1c1507b1ed",
+                 "-p",
+                 "Reply with exactly: OK",
+                 "-n",
+                 "8",
+                 "--device",
+                 "Vulkan0",
+                 "--simple-io",
+                 "--no-warmup",
+                 "-ngl",
+                 "all"
+             ]
+}

@@ -7,7 +7,12 @@ __pycache__/
 *.egg-info/
 build/
 dist/
-results/
 docs/validation/generated/
 docs/qa/generated/
 tools/
+# Local benchmark artifacts and model/build caches
+models/
+.build-*/
+
+# Local heavyweight artifacts
+windows-battery*.log

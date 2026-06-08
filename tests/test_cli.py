@@ -36,7 +36,7 @@ def test_run_placeholder(capsys) -> None:
         "warmup_runs": 1,
         "measured_runs": 1,
         "runner_config": {
-            "executable": "missing/llama-cli",
+            "executable": "missing/llama-completion",
             "model_path": "missing/model.gguf",
             "timeout_sec": 1,
             "extra_args": [],

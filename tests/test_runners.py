@@ -214,3 +214,127 @@ def test_run_comfyui_suite_success(tmp_path: Path) -> None:
 
     assert all(result.success == "true" for result in results)
     assert "image-comfyui-basic-run-1-1.png" in results[0].output_path
+
+
+from ai_local_bench.runners.llamacpp_server import (
+    build_llamacpp_server_command,
+    build_server_payload,
+    parse_server_tokens_per_sec,
+    run_llamacpp_server_suite,
+    validate_response_content,
+)
+
+
+def test_build_llamacpp_server_command() -> None:
+    suite = {
+        "runner_config": {
+            "host": "127.0.0.1",
+            "port": 8080,
+            "ctx_size": 4096,
+            "ngl": 99,
+            "server_args": ["--foo"],
+        },
+        "workload": {"ctx_size": 4096},
+    }
+    command = build_llamacpp_server_command(suite, Path("llama-server"), Path("model.gguf"))
+    assert command[0] == "llama-server"
+    assert "--no-warmup" in command
+    assert "-ngl" in command
+    assert "--foo" in command
+
+
+def test_run_llamacpp_server_suite_success(tmp_path: Path) -> None:
+    fake_executable = tmp_path / "llama-server"
+    fake_model = tmp_path / "model.gguf"
+    fake_executable.write_text("binary", encoding="utf-8")
+    fake_model.write_text("model", encoding="utf-8")
+    suite = {
+        "suite_name": "warm-throughput",
+        "prompt_name": "warm-throughput",
+        "backend": "rocm",
+        "seed": "123",
+        "warmup_runs": 1,
+        "measured_runs": 1,
+        "runner_config": {
+            "executable": str(fake_executable),
+            "model_path": str(fake_model),
+            "base_url": "http://127.0.0.1:8080",
+            "timeout_sec": 1,
+            "server_start_timeout_sec": 1,
+            "ctx_size": 4096,
+            "ngl": 99,
+            "server_args": [],
+        },
+        "workload": {
+            "prompt": "What is 2+2? Output only the digit.",
+            "max_tokens": 4,
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "top_k": 1,
+            "seed": 123,
+        },
+    }
+
+    def fake_urlopen(request, timeout=0):
+        response = MagicMock()
+        if request.full_url.endswith("/health"):
+            response.status = 200
+            response.read.return_value = b'{"status": "ok"}'
+        elif request.full_url.endswith("/completion"):
+            response.status = 200
+            response.read.return_value = json.dumps(
+                {"content": "4", "timings": {"predicted_per_second": 44.95}}
+            ).encode("utf-8")
+        else:
+            raise AssertionError(f"unexpected url: {request.full_url}")
+        response.__enter__.return_value = response
+        response.__exit__.return_value = False
+        return response
+
+    fake_sampler = MagicMock()
+    fake_sampler.stop.return_value = PeakMetrics(ram_peak_mb="12", vram_peak_mb="")
+
+    with patch("subprocess.Popen") as mocked_popen, patch(
+        "urllib.request.urlopen", side_effect=fake_urlopen
+    ), patch(
+        "ai_local_bench.runners.llamacpp_server.MemorySampler",
+        return_value=fake_sampler,
+    ):
+        mocked_process = mocked_popen.return_value
+        mocked_process.pid = 4321
+        mocked_process.terminate.return_value = None
+        mocked_process.wait.return_value = None
+        results = run_llamacpp_server_suite(suite, SYSTEM_INFO, tmp_path)
+
+    assert len(results) == 2
+    assert all(result.success == "true" for result in results)
+    assert results[0].tokens_per_sec == "44.9500"
+    assert mocked_process.terminate.called
+
+
+def test_build_server_payload() -> None:
+    suite = {
+        "workload": {
+            "prompt": "What is 2+2? Output only the digit.",
+            "max_tokens": 4,
+            "temperature": 0.0,
+            "top_p": 1.0,
+            "top_k": 1,
+            "seed": 123,
+        }
+    }
+    payload = build_server_payload(suite)
+    assert payload["prompt"] == suite["workload"]["prompt"]
+    assert payload["top_k"] == 1
+    assert payload["seed"] == 123
+
+
+def test_parse_server_tokens_per_sec() -> None:
+    response = {"timings": {"predicted_per_second": 44.95}}
+    assert parse_server_tokens_per_sec(response) == "44.9500"
+
+
+def test_validate_response_content() -> None:
+    suite = {"workload": {"expected_output": "404"}}
+    assert validate_response_content(suite, {"content": " 404\n"}) is True
+    assert validate_response_content(suite, {"content": "403"}) is False

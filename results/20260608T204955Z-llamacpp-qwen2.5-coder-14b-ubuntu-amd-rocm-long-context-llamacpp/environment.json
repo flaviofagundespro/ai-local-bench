@@ -1,0 +1,20 @@
+{
+  "cpu_architecture": "x86_64",
+  "cpu_count_logical": 24,
+  "cpu_name": "x86_64",
+  "gpus": [
+    {
+      "driver_version": "",
+      "memory_mb": "",
+      "name": "03:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 22 [Radeon RX 6700/6700 XT/6750 XT / 6800M/6850M XT] [1002:73df] (rev c0)",
+      "vendor": "AMD"
+    }
+  ],
+  "os_name": "Linux",
+  "os_release": "6.17.0-23-generic",
+  "os_version": "#23~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Tue Apr 14 16:11:48 UTC 2",
+  "python_executable": "/usr/bin/python3",
+  "python_version": "3.12.3",
+  "ram_total_mb": 31796,
+  "timestamp_utc": "2026-06-08T20:49:55.175180+00:00"
+}

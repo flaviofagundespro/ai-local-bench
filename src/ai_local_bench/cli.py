@@ -12,7 +12,12 @@ from ai_local_bench.reporting import (
     write_results_jsonl,
     write_summary_markdown,
 )
-from ai_local_bench.runners import run_comfyui_suite, run_llamacpp_suite, run_ollama_suite
+from ai_local_bench.runners import (
+    run_comfyui_suite,
+    run_llamacpp_server_suite,
+    run_llamacpp_suite,
+    run_ollama_suite,
+)
 from ai_local_bench.suite_validation import normalize_suite_paths, validate_suite_definition
 
 
@@ -44,7 +49,6 @@ def build_parser() -> argparse.ArgumentParser:
     )
     run_parser.add_argument(
         "--suite",
-        required=True,
         help="Benchmark suite identifier, for example text-basic or image-comfyui-basic.",
     )
     run_parser.add_argument(
@@ -101,6 +105,9 @@ def handle_detect(args: argparse.Namespace) -> int:
 
 
 def handle_run(args: argparse.Namespace) -> int:
+    if not args.suite and not args.suite_file:
+        raise SystemExit("Either --suite or --suite-file is required")
+
     suite = load_suite_definition(args.suite, args.suite_file)
     runner_name = args.runner.lower()
     validate_suite_definition(suite, runner_name)
@@ -111,6 +118,8 @@ def handle_run(args: argparse.Namespace) -> int:
 
     if runner_name == "llamacpp":
         results = run_llamacpp_suite(suite, system_info, run_dir)
+    elif runner_name == "llamacpp_server":
+        results = run_llamacpp_server_suite(suite, system_info, run_dir)
     elif runner_name == "comfyui":
         results = run_comfyui_suite(suite, system_info, run_dir)
     elif runner_name == "ollama":
@@ -160,11 +169,14 @@ def handle_summarize(args: argparse.Namespace) -> int:
     return 0
 
 
-def load_suite_definition(suite_name: str, suite_file: str | None) -> dict:
+def load_suite_definition(suite_name: str | None, suite_file: str | None) -> dict:
     if suite_file:
         suite_path = Path(suite_file)
         suite = json.loads(suite_path.read_text(encoding="utf-8"))
         return normalize_suite_paths(suite, suite_path)
+
+    if not suite_name:
+        raise SystemExit("Suite name is required when --suite-file is not provided")
 
     paths = get_project_paths()
     candidates = [
